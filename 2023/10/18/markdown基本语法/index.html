@@ -4,16 +4,20 @@
   <meta charset="utf-8">
   
   
-  <title>w1t2f3&#39;s blog</title>
+  <title>markdown基本语法 | w1t2f3&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="e-note for myself">
-<meta property="og:type" content="website">
-<meta property="og:title" content="w1t2f3&#39;s blog">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="如果说写纸质笔记的基础是会用笔,那么电子笔记的基础则是掌握markdown语法:)  略微整理一下常用的语法，不定期补充 Let’s begin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="markdown基本语法">
+<meta property="og:url" content="http://example.com/2023/10/18/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/index.html">
 <meta property="og:site_name" content="w1t2f3&#39;s blog">
-<meta property="og:description" content="e-note for myself">
+<meta property="og:description" content="如果说写纸质笔记的基础是会用笔,那么电子笔记的基础则是掌握markdown语法:)  略微整理一下常用的语法，不定期补充 Let’s begin">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-18T06:20:06.000Z">
+<meta property="article:modified_time" content="2023-10-18T08:34:51.846Z">
 <meta property="article:author" content="w1t2f3">
+<meta property="article:tag" content="markdown">
+<meta property="article:tag" content="语法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="w1t2f3's blog" type="application/atom+xml">
@@ -73,9 +77,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-markdown基本语法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-markdown基本语法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/10/18/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="article-date">
   <time class="dt-published" datetime="2023-10-18T06:20:06.000Z" itemprop="datePublished">2023-10-18</time>
@@ -88,8 +90,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/18/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">markdown基本语法</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      markdown基本语法
     </h1>
   
 
@@ -102,11 +104,70 @@
 </blockquote>
 <p>略微整理一下常用的语法，不定期补充</p>
 <p>Let’s begin </p>
-        
-          <p class="article-more-link">
-            <a href="/2023/10/18/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/#more">Read More</a>
-          </p>
-        
+<span id="more"></span>
+
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言 &gt;"></a>引言 &gt;</h3><p>&gt; 我是一条引言</p>
+<p>&gt;&gt; 嵌套引言</p>
+<p>效果：</p>
+<blockquote>
+<p>我是一条引言</p>
+<blockquote>
+<p>嵌套引言</p>
+</blockquote>
+</blockquote>
+<h3 id="标题"><a href="#标题" class="headerlink" title="标题 #"></a>标题 #</h3><p># 一级标题</p>
+<p>## 二级标题</p>
+<p>### 三级标题</p>
+<p>#### 四级标题</p>
+<p>##### 五极标题</p>
+<p>###### 六级标题</p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>正文直接写就ok了</p>
+<p>在vscode里正文双换行表示换行</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码 `"></a>代码 `</h3><h4 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h4><p>```python</p>
+<p>print(“我是python代码”)</p>
+<p>```</p>
+<p>效果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;我是python代码&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h4><p>`print(“行内代码”)`</p>
+<p>效果：</p>
+<p><code>print(&quot;行内代码&quot;)</code></p>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><h4 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h4><p>数字加点加空格即可</p>
+<ol>
+<li>a</li>
+<li>b</li>
+<li>c</li>
+</ol>
+<h4 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h4><p><strong>-</strong> （小小的也很可爱捏）</p>
+<p>- a</p>
+<p>- b</p>
+<p>- c</p>
+<p>效果：</p>
+<ul>
+<li>a</li>
+<li>b</li>
+<li>c</li>
+</ul>
+<h3 id="加粗和倾斜"><a href="#加粗和倾斜" class="headerlink" title="加粗和倾斜"></a>加粗和倾斜</h3><p>**我变粗辣**  —&gt;  <strong>我变粗辣</strong></p>
+<p>*比萨斜字* —&gt;  <em>比萨斜字</em></p>
+<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>***</p>
+<p>---</p>
+<p>___</p>
+<p>使用三个及以上的*****  <strong>-</strong>  <strong>_</strong></p>
+<h3 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h3><p>[]()</p>
+<p>[链接名](链接地址)</p>
+<h3 id="待办清单"><a href="#待办清单" class="headerlink" title="待办清单"></a>待办清单</h3><p>- [ ] 待办事件1</p>
+<p>- [x] 已完成事件</p>
+<p>效果：</p>
+<ul>
+<li><p><input disabled type="checkbox"> 
+待办事件1</p>
+</li>
+<li><p><input checked disabled type="checkbox"> 
+已完成事件</p>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
@@ -119,137 +180,19 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-haha" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/17/haha/" class="article-date">
-  <time class="dt-published" datetime="2023-10-17T09:08:58.000Z" itemprop="datePublished">2023-10-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/17/haha/">haha</a>
-    </h1>
+    <a href="/2023/10/17/haha/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">haha</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/17/haha/" data-id="clnu3szmm0000i0f1f42j704a" data-title="haha" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
-    <article id="post-A-Test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/17/A-Test/" class="article-date">
-  <time class="dt-published" datetime="2023-10-17T08:11:56.000Z" itemprop="datePublished">2023-10-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/17/A-Test/">A Test</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>哈哈、、（试试更新功能O.o）</p>
-<p>整了个来小时算是初具雏形了，暂时先用默认的主题吧，待以后有时间再美化一下。千里之行，始于足下。从这开始记录成长的点点滴滴罢。</p>
-<p><img src="https://github.com/w1t2f3/w1t2f3.github.io/blob/main/2023/10/17/A-Test/2022-10-04(9).png?raw=true"></p>
-        
-          <p class="article-more-link">
-            <a href="/2023/10/17/A-Test/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/17/A-Test/" data-id="clnu4hxoa0000wof13i221srm" data-title="A Test" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/17/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2023-10-17T06:23:49.103Z" itemprop="datePublished">2023-10-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/17/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-        
-          <p class="article-more-link">
-            <a href="/2023/10/17/hello-world/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/17/hello-world/" data-id="clnu1203t00007wf1bone70f1" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
 </section>
