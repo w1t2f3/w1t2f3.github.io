@@ -4,16 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>w1t2f3&#39;s blog</title>
+  <title>SQL注入 | w1t2f3&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="e-note for myself">
-<meta property="og:type" content="website">
-<meta property="og:title" content="w1t2f3&#39;s blog">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="1.1 sql注入标准流程1、推测其数据库的大致语法 eg：select * from 某表 where id &#x3D; ‘xx’ limit 0,1 2、通过错误写入让其报错，显示其闭合方式 \ 是转义字符，把后面第一个东西变成字符串 select user,pass from user where id &#x3D; ‘2\‘ limit 0,1  等价于select user,pass from">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL注入">
+<meta property="og:url" content="http://example.com/2023/10/21/sql%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="w1t2f3&#39;s blog">
-<meta property="og:description" content="e-note for myself">
+<meta property="og:description" content="1.1 sql注入标准流程1、推测其数据库的大致语法 eg：select * from 某表 where id &#x3D; ‘xx’ limit 0,1 2、通过错误写入让其报错，显示其闭合方式 \ 是转义字符，把后面第一个东西变成字符串 select user,pass from user where id &#x3D; ‘2\‘ limit 0,1  等价于select user,pass from">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-21T06:19:49.050Z">
+<meta property="article:modified_time" content="2023-10-21T06:19:26.713Z">
 <meta property="article:author" content="w1t2f3">
+<meta property="article:tag" content="技术基础">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="w1t2f3's blog" type="application/atom+xml">
@@ -73,9 +76,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-sql注入" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-sql注入" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/10/21/sql%E6%B3%A8%E5%85%A5/" class="article-date">
   <time class="dt-published" datetime="2023-10-21T06:19:49.050Z" itemprop="datePublished">2023-10-21</time>
@@ -88,8 +89,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/21/sql%E6%B3%A8%E5%85%A5/">SQL注入</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      SQL注入
     </h1>
   
 
@@ -275,186 +276,19 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-haha" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/17/haha/" class="article-date">
-  <time class="dt-published" datetime="2023-10-17T09:08:58.000Z" itemprop="datePublished">2023-10-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/17/haha/">haha</a>
-    </h1>
+    <a href="/2023/10/17/haha/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">haha</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/17/haha/" data-id="clnu3szmm0000i0f1f42j704a" data-title="haha" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
-    <article id="post-A-Test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/17/A-Test/" class="article-date">
-  <time class="dt-published" datetime="2023-10-17T08:11:56.000Z" itemprop="datePublished">2023-10-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/17/A-Test/">A Test</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>哈哈、、（试试更新功能O.o）</p>
-<p>整了个来小时算是初具雏形了，暂时先用默认的主题吧，待以后有时间再美化一下。千里之行，始于足下。从这开始记录成长的点点滴滴罢。</p>
-<p><img src="https://github.com/w1t2f3/w1t2f3.github.io/blob/main/2023/10/17/A-Test/2022-10-04(9).png?raw=true"></p>
-        
-          <p class="article-more-link">
-            <a href="/2023/10/17/A-Test/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/17/A-Test/" data-id="clnu4hxoa0000wof13i221srm" data-title="A Test" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/17/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2023-10-17T06:23:49.103Z" itemprop="datePublished">2023-10-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/17/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-        
-          <p class="article-more-link">
-            <a href="/2023/10/17/hello-world/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/17/hello-world/" data-id="clnu1203t00007wf1bone70f1" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-markdown基本语法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/09/04/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2023-09-04T06:20:06.000Z" itemprop="datePublished">2023-09-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/09/04/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">markdown基本语法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>如果说写纸质笔记的基础是会用笔,那么电子笔记的基础则是掌握markdown语法:)</p>
-</blockquote>
-<p>略微整理一下常用的语法，不定期补充</p>
-<p>Let’s begin </p>
-        
-          <p class="article-more-link">
-            <a href="/2023/09/04/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/09/04/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" data-id="clnvhzgy30000lof1hmuefwze" data-title="markdown基本语法" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/" rel="tag">技术基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
 </section>
