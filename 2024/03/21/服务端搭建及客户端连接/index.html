@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>cs服务端搭建及客户端连接 | w1t2f3&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="cobaltstrike使用小记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs服务端搭建及客户端连接">
+<meta property="og:url" content="http://example.com/2024/03/21/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/index.html">
+<meta property="og:site_name" content="w1t2f3&#39;s blog">
+<meta property="og:description" content="cobaltstrike使用小记">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028043531-d985cec7-a311-45f7-be17-19eca0602003.png">
+<meta property="og:image" content="http://example.com/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028049594-f9d6cc6d-dbdd-49d7-8877-e6086a280496.png">
+<meta property="og:image" content="http://example.com/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028059818-68024391-7e59-44b7-9d33-cd359f5229b8.png">
+<meta property="og:image" content="http://example.com/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028074530-e36b9dcf-ddfb-4f27-9fc7-03bf6fcbcfb7.png">
+<meta property="og:image" content="http://example.com/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028097830-6357fbcf-8dae-4489-bf03-8603c3839199.png">
+<meta property="article:published_time" content="2024-03-21T13:34:08.035Z">
+<meta property="article:modified_time" content="2024-03-21T13:36:33.075Z">
+<meta property="article:author" content="w1t2f3">
+<meta property="article:tag" content="技术基础">
+<meta property="article:tag" content="cobaltstrike">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028043531-d985cec7-a311-45f7-be17-19eca0602003.png">
+  
+    <link rel="alternate" href="/atom.xml" title="w1t2f3's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">w1t2f3&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-服务端搭建及客户端连接" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/03/21/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/" class="article-date">
+  <time class="dt-published" datetime="2024-03-21T13:34:08.035Z" itemprop="datePublished">2024-03-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      cs服务端搭建及客户端连接
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h3 id="cobaltstrike使用小记"><a href="#cobaltstrike使用小记" class="headerlink" title="cobaltstrike使用小记"></a>cobaltstrike使用小记</h3></blockquote>
+<span id="more"></span>
+
+<h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>#测试可在内网搭建，若想实战则必须搭建于公网上</p>
+<p>第一次使用时搭在自己的kali虚拟机上，跑了半天都没一个上线，后用自己另一个虚拟机测试发现可以上线，当时脑子直接闭环了。后来询问大佬才知道内网搭建只能用于同处于内网的机子，TAT真是蠢极了，不懂原理瞎搞</p>
+<h5 id="cs的搭建"><a href="#cs的搭建" class="headerlink" title="cs的搭建"></a>cs的搭建</h5><p>cs依赖于java，首先得确保有java环境</p>
+<p>先将cs导入服务器</p>
+<p><img src="/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028043531-d985cec7-a311-45f7-be17-19eca0602003.png" alt="img"></p>
+<p>然后使用root权限将teamserver提权</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 teamserver</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028049594-f9d6cc6d-dbdd-49d7-8877-e6086a280496.png" alt="img"></p>
+<p>接着搭建cs</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./ teamserver IP 密码</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028059818-68024391-7e59-44b7-9d33-cd359f5229b8.png" alt="img"></p>
+<p>搭建好后会出现一个密钥，客户端第一次连接时正常会弹出密钥用于确认</p>
+<p>到此为止<strong>服务端</strong>基本搭建结束，打卡实际用客户端连接时遇到了数不尽的问题:&lt;</p>
+<h5 id="搭建及连接的常见问题"><a href="#搭建及连接的常见问题" class="headerlink" title="搭建及连接的常见问题"></a>搭建及连接的常见问题</h5><h6 id="一、拒绝连接（connecting-refuse），最最大坑"><a href="#一、拒绝连接（connecting-refuse），最最大坑" class="headerlink" title="一、拒绝连接（connecting refuse），最最大坑"></a>一、拒绝连接（connecting refuse），最最大坑</h6><p><img src="/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028074530-e36b9dcf-ddfb-4f27-9fc7-03bf6fcbcfb7.png" alt="img"></p>
+<p>1、服务端未搭建好时会出现此状况</p>
+<p>2、未开启50050端口</p>
+<p>3、防火墙是否放行端口</p>
+<p><em><strong>服务器内开</strong></em></p>
+<p>第一次做测试用的centos7.6</p>
+<p>1）开启防火墙</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2）开放指定端口</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=50050/tcp --permanent</span><br><span class="line">命令含义：</span><br><span class="line">    --zone <span class="params">#</span>作用域</span><br><span class="line">    --add-port=1935/tcp  <span class="params">#</span>添加端口，格式为：端口/通讯协议</span><br><span class="line">    --permanent  <span class="params">#</span>永久生效，没有此参数重启后失效</span><br></pre></td></tr></table></figure>
+
+
+
+<p>3）重启防火墙</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+
+
+<p>4）查看端口号</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">netstat -ntlp   //查看当前所有tcp端口·</span><br><span class="line">netstat -ntulp |grep 1935   //查看所有1935端口使用情况·</span><br><span class="line">ps 进程号    //进一步查看进程详细信息</span><br><span class="line">kill -9 进程号    //终止进程</span><br></pre></td></tr></table></figure>
+
+
+
+<p><em><strong>服务器外云控制台</strong></em></p>
+<p><img src="/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028097830-6357fbcf-8dae-4489-bf03-8603c3839199.png" alt="img"></p>
+<p>测试时用的腾讯云的服务器，去轻量应用服务器的防火墙添加50050通行端口（一般出口不受限制，多半控制入口）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/03/21/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/" data-id="clu1a3mcs0000pgf139w07mfy" data-title="cs服务端搭建及客户端连接" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cobaltstrike/" rel="tag">cobaltstrike</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/" rel="tag">技术基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2024/03/21/DC-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cobalt-Strike/" rel="tag">Cobalt Strike</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cobaltstrike/" rel="tag">cobaltstrike</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E8%B7%B5%E5%BA%94%E7%94%A8/" rel="tag">实践应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/" rel="tag">技术基础</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Cobalt-Strike/" style="font-size: 15px;">Cobalt Strike</a> <a href="/tags/cobaltstrike/" style="font-size: 10px;">cobaltstrike</a> <a href="/tags/%E5%AE%9E%E8%B7%B5%E5%BA%94%E7%94%A8/" style="font-size: 10px;">实践应用</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">技术基础</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/03/21/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/">cs服务端搭建及客户端连接</a>
+          </li>
+        
+          <li>
+            <a href="/2024/03/21/DC-1/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/16/flask/">flask</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/03/cs%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/">cs-权限维持</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/03/%E9%92%93%E9%B1%BC/">钓鱼攻击</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 w1t2f3<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
