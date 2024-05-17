@@ -23,14 +23,14 @@
 <meta property="og:site_name" content="w1t2f3&#39;s blog">
 <meta property="og:description" content="cobaltstrike使用小记">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/cs.jpg">
+<meta property="og:image" content="http://example.com/img/cs.jpg">
 <meta property="article:published_time" content="2024-03-21T13:34:08.035Z">
-<meta property="article:modified_time" content="2024-05-17T06:03:39.223Z">
+<meta property="article:modified_time" content="2024-05-17T06:29:33.953Z">
 <meta property="article:author" content="w1t2f3">
 <meta property="article:tag" content="技术基础">
 <meta property="article:tag" content="cobaltstrike">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/cs.jpg">
+<meta name="twitter:image" content="http://example.com/img/cs.jpg">
   
   
   
@@ -98,7 +98,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>e blog</strong>
+      <strong>XP</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -284,22 +284,22 @@
 <p>第一次使用时搭在自己的kali虚拟机上，跑了半天都没一个上线，后用自己另一个虚拟机测试发现可以上线，当时脑子直接闭环了。后来询问大佬才知道内网搭建只能用于同处于内网的机子，TAT真是蠢极了，不懂原理瞎搞</p>
 <h5 id="cs的搭建"><a href="#cs的搭建" class="headerlink" title="cs的搭建"></a>cs的搭建</h5><p>cs依赖于java，首先得确保有java环境</p>
 <p>先将cs导入服务器</p>
-<p><img src="/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028043531-d985cec7-a311-45f7-be17-19eca0602003.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/cs%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028043531-d985cec7-a311-45f7-be17-19eca0602003.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>然后使用root权限将teamserver提权</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">chmod</span> <span class="hljs-number">777</span> teamserver<br></code></pre></td></tr></table></figure>
 
 
 
-<p><img src="/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028049594-f9d6cc6d-dbdd-49d7-8877-e6086a280496.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/cs%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028049594-f9d6cc6d-dbdd-49d7-8877-e6086a280496.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>接着搭建cs</p>
 <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm">./ teamserver <span class="hljs-built_in">IP</span> 密码<br></code></pre></td></tr></table></figure>
 
 
 
-<p><img src="/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028059818-68024391-7e59-44b7-9d33-cd359f5229b8.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/cs%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028059818-68024391-7e59-44b7-9d33-cd359f5229b8.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>搭建好后会出现一个密钥，客户端第一次连接时正常会弹出密钥用于确认</p>
 <p>到此为止<strong>服务端</strong>基本搭建结束，打卡实际用客户端连接时遇到了数不尽的问题:&lt;</p>
-<h5 id="搭建及连接的常见问题"><a href="#搭建及连接的常见问题" class="headerlink" title="搭建及连接的常见问题"></a>搭建及连接的常见问题</h5><h6 id="一、拒绝连接（connecting-refuse），最最大坑"><a href="#一、拒绝连接（connecting-refuse），最最大坑" class="headerlink" title="一、拒绝连接（connecting refuse），最最大坑"></a>一、拒绝连接（connecting refuse），最最大坑</h6><p><img src="/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028074530-e36b9dcf-ddfb-4f27-9fc7-03bf6fcbcfb7.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h5 id="搭建及连接的常见问题"><a href="#搭建及连接的常见问题" class="headerlink" title="搭建及连接的常见问题"></a>搭建及连接的常见问题</h5><h6 id="一、拒绝连接（connecting-refuse），最最大坑"><a href="#一、拒绝连接（connecting-refuse），最最大坑" class="headerlink" title="一、拒绝连接（connecting refuse），最最大坑"></a>一、拒绝连接（connecting refuse），最最大坑</h6><p><img src="/img/cs%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028074530-e36b9dcf-ddfb-4f27-9fc7-03bf6fcbcfb7.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>1、服务端未搭建好时会出现此状况</p>
 <p>2、未开启50050端口</p>
 <p>3、防火墙是否放行端口</p>
@@ -326,7 +326,7 @@
 
 
 <p><em><strong>服务器外云控制台</strong></em></p>
-<p><img src="/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028097830-6357fbcf-8dae-4489-bf03-8603c3839199.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/cs%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028097830-6357fbcf-8dae-4489-bf03-8603c3839199.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>测试时用的腾讯云的服务器，去轻量应用服务器的防火墙添加50050通行端口（一般出口不受限制，多半控制入口）</p>
 
                 
