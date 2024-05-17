@@ -19,22 +19,18 @@
     <meta name="description" content="cobaltstrike使用小记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cs服务端搭建及客户端连接">
-<meta property="og:url" content="http://example.com/2024/03/21/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/index.html">
+<meta property="og:url" content="http://example.com/2024/03/21/cs%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/index.html">
 <meta property="og:site_name" content="w1t2f3&#39;s blog">
 <meta property="og:description" content="cobaltstrike使用小记">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028043531-d985cec7-a311-45f7-be17-19eca0602003.png">
-<meta property="og:image" content="http://example.com/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028049594-f9d6cc6d-dbdd-49d7-8877-e6086a280496.png">
-<meta property="og:image" content="http://example.com/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028059818-68024391-7e59-44b7-9d33-cd359f5229b8.png">
-<meta property="og:image" content="http://example.com/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028074530-e36b9dcf-ddfb-4f27-9fc7-03bf6fcbcfb7.png">
-<meta property="og:image" content="http://example.com/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028097830-6357fbcf-8dae-4489-bf03-8603c3839199.png">
+<meta property="og:image" content="http://example.com/cs.jpg">
 <meta property="article:published_time" content="2024-03-21T13:34:08.035Z">
-<meta property="article:modified_time" content="2024-03-21T13:36:33.075Z">
+<meta property="article:modified_time" content="2024-05-17T06:03:39.223Z">
 <meta property="article:author" content="w1t2f3">
 <meta property="article:tag" content="技术基础">
 <meta property="article:tag" content="cobaltstrike">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028043531-d985cec7-a311-45f7-be17-19eca0602003.png">
+<meta name="twitter:image" content="http://example.com/cs.jpg">
   
   
   
@@ -290,13 +286,13 @@
 <p>先将cs导入服务器</p>
 <p><img src="/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028043531-d985cec7-a311-45f7-be17-19eca0602003.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>然后使用root权限将teamserver提权</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 teamserver</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">chmod</span> <span class="hljs-number">777</span> teamserver<br></code></pre></td></tr></table></figure>
 
 
 
 <p><img src="/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028049594-f9d6cc6d-dbdd-49d7-8877-e6086a280496.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>接着搭建cs</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./ teamserver IP 密码</span><br></pre></td></tr></table></figure>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm">./ teamserver <span class="hljs-built_in">IP</span> 密码<br></code></pre></td></tr></table></figure>
 
 
 
@@ -310,22 +306,22 @@
 <p><em><strong>服务器内开</strong></em></p>
 <p>第一次做测试用的centos7.6</p>
 <p>1）开启防火墙</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs latex">systemctl start firewalld<br></code></pre></td></tr></table></figure>
 
 
 
 <p>2）开放指定端口</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=50050/tcp --permanent</span><br><span class="line">命令含义：</span><br><span class="line">    --zone <span class="params">#</span>作用域</span><br><span class="line">    --add-port=1935/tcp  <span class="params">#</span>添加端口，格式为：端口/通讯协议</span><br><span class="line">    --permanent  <span class="params">#</span>永久生效，没有此参数重启后失效</span><br></pre></td></tr></table></figure>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex">firewall-cmd --zone=public --add-port=50050/tcp --permanent<br>命令含义：<br>    --zone <span class="hljs-params">#</span>作用域<br>    --add-port=1935/tcp  <span class="hljs-params">#</span>添加端口，格式为：端口/通讯协议<br>    --permanent  <span class="hljs-params">#</span>永久生效，没有此参数重启后失效<br></code></pre></td></tr></table></figure>
 
 
 
 <p>3）重启防火墙</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs latex">firewall-cmd --reload<br></code></pre></td></tr></table></figure>
 
 
 
 <p>4）查看端口号</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">netstat -ntlp   //查看当前所有tcp端口·</span><br><span class="line">netstat -ntulp |grep 1935   //查看所有1935端口使用情况·</span><br><span class="line">ps 进程号    //进一步查看进程详细信息</span><br><span class="line">kill -9 进程号    //终止进程</span><br></pre></td></tr></table></figure>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs latex">netstat -ntlp   //查看当前所有tcp端口·<br>netstat -ntulp |grep 1935   //查看所有1935端口使用情况·<br>ps 进程号    //进一步查看进程详细信息<br>kill -9 进程号    //终止进程<br></code></pre></td></tr></table></figure>
 
 
 
@@ -359,7 +355,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>cs服务端搭建及客户端连接</div>
-      <div>http://example.com/2024/03/21/服务端搭建及客户端连接/</div>
+      <div>http://example.com/2024/03/21/cs服务端搭建及客户端连接/</div>
     </div>
     <div class="license-meta">
       
