@@ -16,25 +16,22 @@
   <meta name="author" content="w1t2f3">
   <meta name="keywords" content="">
   
-    <meta name="description" content="cobaltstrike使用小记">
+    <meta name="description" content="渗透测试前如何进行资产搜集">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cs服务端搭建及客户端连接">
-<meta property="og:url" content="http://example.com/2024/03/21/cs%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/index.html">
+<meta property="og:title" content="资产搜集">
+<meta property="og:url" content="http://example.com/2024/05/20/%E8%B5%84%E4%BA%A7%E6%90%9C%E9%9B%86/index.html">
 <meta property="og:site_name" content="w1t2f3&#39;s blog">
-<meta property="og:description" content="cobaltstrike使用小记">
+<meta property="og:description" content="渗透测试前如何进行资产搜集">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/img/cs.jpg">
-<meta property="article:published_time" content="2024-03-21T13:34:08.035Z">
-<meta property="article:modified_time" content="2024-05-17T06:29:33.953Z">
+<meta property="article:published_time" content="2024-05-20T07:26:35.114Z">
+<meta property="article:modified_time" content="2024-05-20T07:35:19.803Z">
 <meta property="article:author" content="w1t2f3">
 <meta property="article:tag" content="技术基础">
-<meta property="article:tag" content="cobaltstrike">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/cs.jpg">
   
   
   
-  <title>cs服务端搭建及客户端连接 - w1t2f3&#39;s blog</title>
+  <title>资产搜集 - w1t2f3&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="cs服务端搭建及客户端连接"></span>
+            <span id="subtitle" data-typed-text="资产搜集"></span>
           
         </div>
 
@@ -211,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-21 21:34" pubdate>
-          March 21, 2024 pm
+        <time datetime="2024-05-20 15:26" pubdate>
+          May 20, 2024 pm
         </time>
       </span>
     
@@ -223,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          465 words
+          431 words
         
       </span>
     
@@ -271,63 +268,24 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">cs服务端搭建及客户端连接</h1>
+            <h1 id="seo-header">资产搜集</h1>
             
             
               <div class="markdown-body">
                 
-                <blockquote>
-<h3 id="cobaltstrike使用小记"><a href="#cobaltstrike使用小记" class="headerlink" title="cobaltstrike使用小记"></a>cobaltstrike使用小记</h3></blockquote>
+                <p>渗透测试前如何进行资产搜集</p>
 <span id="more"></span>
 
-<h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>#测试可在内网搭建，若想实战则必须搭建于公网上</p>
-<p>第一次使用时搭在自己的kali虚拟机上，跑了半天都没一个上线，后用自己另一个虚拟机测试发现可以上线，当时脑子直接闭环了。后来询问大佬才知道内网搭建只能用于同处于内网的机子，TAT真是蠢极了，不懂原理瞎搞</p>
-<h5 id="cs的搭建"><a href="#cs的搭建" class="headerlink" title="cs的搭建"></a>cs的搭建</h5><p>cs依赖于java，首先得确保有java环境</p>
-<p>先将cs导入服务器</p>
-<p><img src="/img/cs%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028043531-d985cec7-a311-45f7-be17-19eca0602003.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>然后使用root权限将teamserver提权</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">chmod</span> <span class="hljs-number">777</span> teamserver<br></code></pre></td></tr></table></figure>
 
 
-
-<p><img src="/img/cs%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028049594-f9d6cc6d-dbdd-49d7-8877-e6086a280496.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>接着搭建cs</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm">./ teamserver <span class="hljs-built_in">IP</span> 密码<br></code></pre></td></tr></table></figure>
-
-
-
-<p><img src="/img/cs%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028059818-68024391-7e59-44b7-9d33-cd359f5229b8.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>搭建好后会出现一个密钥，客户端第一次连接时正常会弹出密钥用于确认</p>
-<p>到此为止<strong>服务端</strong>基本搭建结束，打卡实际用客户端连接时遇到了数不尽的问题:&lt;</p>
-<h5 id="搭建及连接的常见问题"><a href="#搭建及连接的常见问题" class="headerlink" title="搭建及连接的常见问题"></a>搭建及连接的常见问题</h5><h6 id="一、拒绝连接（connecting-refuse），最最大坑"><a href="#一、拒绝连接（connecting-refuse），最最大坑" class="headerlink" title="一、拒绝连接（connecting refuse），最最大坑"></a>一、拒绝连接（connecting refuse），最最大坑</h6><p><img src="/img/cs%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028074530-e36b9dcf-ddfb-4f27-9fc7-03bf6fcbcfb7.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>1、服务端未搭建好时会出现此状况</p>
-<p>2、未开启50050端口</p>
-<p>3、防火墙是否放行端口</p>
-<p><em><strong>服务器内开</strong></em></p>
-<p>第一次做测试用的centos7.6</p>
-<p>1）开启防火墙</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs latex">systemctl start firewalld<br></code></pre></td></tr></table></figure>
-
-
-
-<p>2）开放指定端口</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs latex">firewall-cmd --zone=public --add-port=50050/tcp --permanent<br>命令含义：<br>    --zone <span class="hljs-params">#</span>作用域<br>    --add-port=1935/tcp  <span class="hljs-params">#</span>添加端口，格式为：端口/通讯协议<br>    --permanent  <span class="hljs-params">#</span>永久生效，没有此参数重启后失效<br></code></pre></td></tr></table></figure>
-
-
-
-<p>3）重启防火墙</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs latex">firewall-cmd --reload<br></code></pre></td></tr></table></figure>
-
-
-
-<p>4）查看端口号</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs latex">netstat -ntlp   //查看当前所有tcp端口·<br>netstat -ntulp |grep 1935   //查看所有1935端口使用情况·<br>ps 进程号    //进一步查看进程详细信息<br>kill -9 进程号    //终止进程<br></code></pre></td></tr></table></figure>
-
-
-
-<p><em><strong>服务器外云控制台</strong></em></p>
-<p><img src="/img/cs%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/1711028097830-6357fbcf-8dae-4489-bf03-8603c3839199.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>测试时用的腾讯云的服务器，去轻量应用服务器的防火墙添加50050通行端口（一般出口不受限制，多半控制入口）</p>
+<h2 id="一、如何通过测绘平台进行资产收集"><a href="#一、如何通过测绘平台进行资产收集" class="headerlink" title="一、如何通过测绘平台进行资产收集"></a>一、如何通过测绘平台进行资产收集</h2><h3 id="1、子域名搜集"><a href="#1、子域名搜集" class="headerlink" title="1、子域名搜集"></a>1、子域名搜集</h3><p>domain_suffix&#x3D;baidu.com</p>
+<h3 id="2、icon图标搜集"><a href="#2、icon图标搜集" class="headerlink" title="2、icon图标搜集"></a>2、icon图标搜集</h3><p>通过f12检查元素或者其他方法获取到网站的icon</p>
+<p>上传到测绘平台查找匹配的资产，可以和子域名搜索一起使用，锁定目标范围</p>
+<h3 id="3、ICP备案号搜索"><a href="#3、ICP备案号搜索" class="headerlink" title="3、ICP备案号搜索"></a>3、ICP备案号搜索</h3><p>ICP备案号可以算是网站的一个基础特征，传统方式是访问企查查等平台，通过企业名称查看ICP备案号。<br>但测绘平台可以直接通过搜索ICP备案企业名称，来查看ICP备案号，这里还是比较惊喜的。<br>所以我选择了body&#x3D;京ICP证030173号 &amp;&amp; domain_suffix&#x3D;baidu.com</p>
+<h2 id="二、快速搜集薄弱资产"><a href="#二、快速搜集薄弱资产" class="headerlink" title="二、快速搜集薄弱资产"></a>二、快速搜集薄弱资产</h2><h3 id="1、敏感关键词搜索"><a href="#1、敏感关键词搜索" class="headerlink" title="1、敏感关键词搜索"></a>1、敏感关键词搜索</h3><p>检索站点标题可以尝试带有“登录”、“管理”、“后台”、“中心”等关键词，这里我选择的是domain_suffix&#x3D;”baidu.com”&amp;&amp;title&#x3D;”登录”&amp;&amp;title&#x3D;”管理”。或者通过googlehacking，使用intitle:后台</p>
+<h3 id="2、直接输入关键词“Login”"><a href="#2、直接输入关键词“Login”" class="headerlink" title="2、直接输入关键词“Login”"></a>2、直接输入关键词“Login”</h3><h3 id="3、通过C段快速定位未授权端口"><a href="#3、通过C段快速定位未授权端口" class="headerlink" title="3、通过C段快速定位未授权端口"></a>3、通过C段快速定位未授权端口</h3><h3 id="4、通过指纹快速查找问题资产"><a href="#4、通过指纹快速查找问题资产" class="headerlink" title="4、通过指纹快速查找问题资产"></a>4、通过指纹快速查找问题资产</h3><p>在刷问题资产时，可以通过某款特定的CMS或指定的组件，结合检索来提高准确率。</p>
+<p>component_name&#x3D;”Apache Tomcat”</p>
+<h3 id="5、通过指纹扩大疑似存在问题的资产范围"><a href="#5、通过指纹扩大疑似存在问题的资产范围" class="headerlink" title="5、通过指纹扩大疑似存在问题的资产范围"></a>5、通过指纹扩大疑似存在问题的资产范围</h3><p>可以从疑似存在问题的目标资产中提取相应的指纹。例如js，css，组件关键词等信息进行查询。<br>例如：Shiro的rememberMe字段，输入检索语法app&#x3D;”shiro” and body&#x3D;”rememberMe”，即可锁定多个疑似存在相同问题的系统。</p>
 
                 
               </div>
@@ -342,8 +300,6 @@
       
         <a href="/tags/%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/" class="print-no-link">#技术基础</a>
       
-        <a href="/tags/cobaltstrike/" class="print-no-link">#cobaltstrike</a>
-      
     </div>
   
 </div>
@@ -354,8 +310,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>cs服务端搭建及客户端连接</div>
-      <div>http://example.com/2024/03/21/cs服务端搭建及客户端连接/</div>
+      <div>资产搜集</div>
+      <div>http://example.com/2024/05/20/资产搜集/</div>
     </div>
     <div class="license-meta">
       
@@ -367,7 +323,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>March 21, 2024</div>
+          <div>May 20, 2024</div>
         </div>
       
       
@@ -399,18 +355,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/05/20/%E8%B5%84%E4%BA%A7%E6%90%9C%E9%9B%86/" title="资产搜集">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">资产搜集</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/03/21/%E6%89%93%E9%9D%B6%E5%90%8E%E4%B8%AA%E4%BA%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/" title="打靶后个人的一些总结">
-                        <span class="hidden-mobile">打靶后个人的一些总结</span>
+                      <a href="/2024/03/21/cs%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/" title="cs服务端搭建及客户端连接">
+                        <span class="hidden-mobile">cs服务端搭建及客户端连接</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

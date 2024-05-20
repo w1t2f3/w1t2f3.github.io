@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>资产搜集</title>
+    <link href="/2024/05/20/%E8%B5%84%E4%BA%A7%E6%90%9C%E9%9B%86/"/>
+    <url>/2024/05/20/%E8%B5%84%E4%BA%A7%E6%90%9C%E9%9B%86/</url>
+    
+    <content type="html"><![CDATA[<p>渗透测试前如何进行资产搜集</p><span id="more"></span><h2 id="一、如何通过测绘平台进行资产收集"><a href="#一、如何通过测绘平台进行资产收集" class="headerlink" title="一、如何通过测绘平台进行资产收集"></a>一、如何通过测绘平台进行资产收集</h2><h3 id="1、子域名搜集"><a href="#1、子域名搜集" class="headerlink" title="1、子域名搜集"></a>1、子域名搜集</h3><p>domain_suffix&#x3D;baidu.com</p><h3 id="2、icon图标搜集"><a href="#2、icon图标搜集" class="headerlink" title="2、icon图标搜集"></a>2、icon图标搜集</h3><p>通过f12检查元素或者其他方法获取到网站的icon</p><p>上传到测绘平台查找匹配的资产，可以和子域名搜索一起使用，锁定目标范围</p><h3 id="3、ICP备案号搜索"><a href="#3、ICP备案号搜索" class="headerlink" title="3、ICP备案号搜索"></a>3、ICP备案号搜索</h3><p>ICP备案号可以算是网站的一个基础特征，传统方式是访问企查查等平台，通过企业名称查看ICP备案号。<br>但测绘平台可以直接通过搜索ICP备案企业名称，来查看ICP备案号，这里还是比较惊喜的。<br>所以我选择了body&#x3D;京ICP证030173号 &amp;&amp; domain_suffix&#x3D;baidu.com</p><h2 id="二、快速搜集薄弱资产"><a href="#二、快速搜集薄弱资产" class="headerlink" title="二、快速搜集薄弱资产"></a>二、快速搜集薄弱资产</h2><h3 id="1、敏感关键词搜索"><a href="#1、敏感关键词搜索" class="headerlink" title="1、敏感关键词搜索"></a>1、敏感关键词搜索</h3><p>检索站点标题可以尝试带有“登录”、“管理”、“后台”、“中心”等关键词，这里我选择的是domain_suffix&#x3D;”baidu.com”&amp;&amp;title&#x3D;”登录”&amp;&amp;title&#x3D;”管理”。或者通过googlehacking，使用intitle:后台</p><h3 id="2、直接输入关键词“Login”"><a href="#2、直接输入关键词“Login”" class="headerlink" title="2、直接输入关键词“Login”"></a>2、直接输入关键词“Login”</h3><h3 id="3、通过C段快速定位未授权端口"><a href="#3、通过C段快速定位未授权端口" class="headerlink" title="3、通过C段快速定位未授权端口"></a>3、通过C段快速定位未授权端口</h3><h3 id="4、通过指纹快速查找问题资产"><a href="#4、通过指纹快速查找问题资产" class="headerlink" title="4、通过指纹快速查找问题资产"></a>4、通过指纹快速查找问题资产</h3><p>在刷问题资产时，可以通过某款特定的CMS或指定的组件，结合检索来提高准确率。</p><p>component_name&#x3D;”Apache Tomcat”</p><h3 id="5、通过指纹扩大疑似存在问题的资产范围"><a href="#5、通过指纹扩大疑似存在问题的资产范围" class="headerlink" title="5、通过指纹扩大疑似存在问题的资产范围"></a>5、通过指纹扩大疑似存在问题的资产范围</h3><p>可以从疑似存在问题的目标资产中提取相应的指纹。例如js，css，组件关键词等信息进行查询。<br>例如：Shiro的rememberMe字段，输入检索语法app&#x3D;”shiro” and body&#x3D;”rememberMe”，即可锁定多个疑似存在相同问题的系统。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>技术基础</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>cs服务端搭建及客户端连接</title>
     <link href="/2024/03/21/cs%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/"/>
     <url>/2024/03/21/cs%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5/</url>
