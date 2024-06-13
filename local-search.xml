@@ -4,6 +4,63 @@
   
   
   <entry>
+    <title>经久不衰，防不胜防的攻击——社会工程学</title>
+    <link href="/2024/06/13/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6/"/>
+    <url>/2024/06/13/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>“You can’t download a patch for human stupidity”</p><p>“你无法为人类的愚蠢打上补丁”</p><p>​——凯文·米特尼克(Kevin Mitnick)</p></blockquote><span id="more"></span>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>技术基础</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>应急响应</title>
+    <link href="/2024/06/13/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/"/>
+    <url>/2024/06/13/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/</url>
+    
+    <content type="html"><![CDATA[<p>作为一名白帽，应对来自黑客的攻击和保护好服务器是一门必修课</p><span id="more"></span><h2 id="0x01-应急响应基本流程"><a href="#0x01-应急响应基本流程" class="headerlink" title="0x01 应急响应基本流程"></a>0x01 应急响应基本流程</h2><p>1）首先判断服务器资产、影响范围以及严重程度，确认有没有必要将服务器下线隔离，然后根据服务器的失陷时间和态势感知的告警，判断是由什么漏洞进来的<br>2）其次就是取证排查阶段，如果是web漏洞，就是查看web日志，根据失陷时间节点往上排查是否上传webshell；<br>再查看后门是否有恶意的命令执行、文件上传。如果有恶意的文件比如说.exe，可以放到一些微步社区平台分析；<br>如果是webshell的话，可以用d盾、河马进行查杀<br>3）接下来可以通过其他主机查看是否有相同的攻击迹象，然后排查是否有可疑的进程、端口、自启动项，可以用火绒剑查看有没有异常外联<br>4）然后就是进行攻击路径的还原，可以通过对日志、流量进行分析、确定他的攻击路径，然后判断出他的漏洞点并切断他的攻击路径<br>5）此时可以再观察一段时间，看有没有流量反连、有没有内存马<br>6）后面可以根据样本分析到的ip地址进行信息收集，进行常规的溯源，查看是否有个人id泄漏、社交平台搜索其个人信息、利用蜜罐系统反制等手段绘制攻击者画像<br>7）若无则尝试是否能够打进其服务器，比如说常见的cs反制，可以爆破攻击者cs服务器密码，或者利用cs漏洞拿到攻击者服务器权限，进一步获取攻击者信息</p><h2 id="0x02-不同系统常用应急响应命令"><a href="#0x02-不同系统常用应急响应命令" class="headerlink" title="0x02 不同系统常用应急响应命令"></a>0x02 不同系统常用应急响应命令</h2><h3 id="Windows系统"><a href="#Windows系统" class="headerlink" title="Windows系统"></a>Windows系统</h3><p>用户排查：<code>net user|lusrmgr.msc</code></p><p><img src="/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/1717123823092.png" alt="用户排查"></p><p>启动项排查：<code>msconfig</code></p><p>计划任务排查：<code>schtasks</code></p><p><img src="/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/image-20240531110920534.png" alt="计划任务"></p><p>进程排查：<code>netstat -ano | findstr &quot;ESTABLISHED” </code>   #查看建立可以链接的PID进程；<img src="/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/1717125573788.png" alt="进程排查"></p><p><code>nestat -anb</code>    #需要管理员权限，快速对应到相关程序</p><p>服务排查：<code>services.msc</code></p><p><img src="/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/1717125713284.png" alt="服务排查"></p><p>日志排查：C:\WINDOWS\System32 config\SysEvent.evt或者eventvwr</p><p><img src="/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/1717204649232.png" alt="日志排查"></p><p>内存取证：Volatility工具</p><p><strong>Window常用事件id</strong></p><p>4624成功登录     7030服务创建错误</p><p>4625失败登录     7045服务创建</p><p>4720创建用户     4776成功&#x2F;失败的账户认证</p><h3 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h3><p>常用的一些命令</p><p><code>netstat</code>：查看系统网络连接状态和监听端口情况，识别是否有异常连接。<br><code>ps</code>：查看当前系统进程，识别是否有异常进程。<br><code>top</code>：实时监控系统资源占用情况，发现异常进程或恶意程序。<br><code>lsof</code>：列出当前系统打开的文件，包括进程号、文件描述符等信息，帮助发现具有威胁性的进程或文件。<br><code>tcpdump</code>：抓取网络数据包，分析网络流量，检测网络攻击。<br><code>strace</code>：跟踪进程的系统调用和信号，定位问题所在，发现异常进程。<br><code>md5sum</code>：计算文件的MD5值，帮助验证文件完整性。<br><code>find</code>：查找并定位目标文件或目录，搜索指定范围内的文件等。<br><code>grep</code>：查找文本内容，支持正则表达式。<br><code>chattr</code>: 设置文件或目录的属性，比如设置只读和隐藏属性等，保护系统安全。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>技术基础</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>wireshark实战操作</title>
+    <link href="/2024/06/13/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/"/>
+    <url>/2024/06/13/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/</url>
+    
+    <content type="html"><![CDATA[<p>使用wireshark分析不同攻击流量</p><span id="more"></span><p>1、暴力破解</p><p>短时间内产生大量流量，且只有某个或多个参数在变化</p><p><img src="/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717408185613.png" alt="1717408185613"></p><p><img src="/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717408156899.png" alt="1717408156899"></p><p>用bp做的爆破测试，不到一分钟的时间…</p><p>2、冰蝎</p><p>流量通常是加密的，存在明显的冰蝎特征</p><p>如<code>Accept::*/*;q=0.01 </code> <code>Connection:keep-alive</code>(冰蝎默认长链接)</p><p>建立连接后的cookie存在特征字符。所有请求 Cookie的格式都为: <code>Cookie: PHPSESSID=; path=/；</code></p><p><img src="/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717411534620%E7%BC%96%E8%BE%91.png" alt="1717411534620编辑"></p><p>请求头中可能包含<code>Pragma: no-cache</code> ,<code>Cache-Control: no-cache</code></p><p><img src="/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717411600804%E7%BC%96%E8%BE%91.png" alt="1717411600804编辑"></p><p>3、蚁剑</p><ul><li><p>每个请求实体都存在<code>@ini_set(“display_errors”, “0”);@set_time_limit(0)</code>开头。并且后面存在base64等字符</p></li><li><p>使用 随机数+响应内容+随机数使用base64加密的payload，数据包存在以下base加密的eval命令，数据包中的payload几个分段内容都是用了base加密，解密之后可以看到相关的路径和命令等。</p></li></ul><p><img src="/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717413799652.png" alt="1717413799652"></p><p>4、菜刀</p><p>  ⅰ. 请求包中 ua头为百度爬虫，火狐</p><p>  ⅱ. 请求实体中存在eval，base64等特征字符</p><p>  ⅲ. 请求实体中传递depayload为base64编码，并且存在固定的Base64编码</p><p><img src="/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717414747292.png" alt="1717414747292"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>应用实践</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>断网法术之ARP欺骗</title>
     <link href="/2024/05/27/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/"/>
     <url>/2024/05/27/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/</url>

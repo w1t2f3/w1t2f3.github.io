@@ -16,27 +16,28 @@
   <meta name="author" content="w1t2f3">
   <meta name="keywords" content="">
   
-    <meta name="description" content="想整蛊你的死党朋友让上不了网，黑魔法ARP攻击满足你">
+    <meta name="description" content="作为一名白帽，应对来自黑客的攻击和保护好服务器是一门必修课">
 <meta property="og:type" content="article">
-<meta property="og:title" content="断网法术之ARP欺骗">
-<meta property="og:url" content="http://example.com/2024/05/27/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/index.html">
+<meta property="og:title" content="应急响应">
+<meta property="og:url" content="http://example.com/2024/06/13/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/index.html">
 <meta property="og:site_name" content="w1t2f3&#39;s blog">
-<meta property="og:description" content="想整蛊你的死党朋友让上不了网，黑魔法ARP攻击满足你">
+<meta property="og:description" content="作为一名白帽，应对来自黑客的攻击和保护好服务器是一门必修课">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/1716813756191.png">
-<meta property="og:image" content="http://example.com/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/1716813818992.png">
-<meta property="og:image" content="http://example.com/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/1716813805503.png">
-<meta property="og:image" content="http://example.com/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/1716813961484.png">
-<meta property="article:published_time" content="2024-05-27T11:32:20.332Z">
-<meta property="article:modified_time" content="2024-05-27T14:15:19.573Z">
+<meta property="og:image" content="http://example.com/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/1717123823092.png">
+<meta property="og:image" content="http://example.com/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/image-20240531110920534.png">
+<meta property="og:image" content="http://example.com/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/1717125573788.png">
+<meta property="og:image" content="http://example.com/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/1717125713284.png">
+<meta property="og:image" content="http://example.com/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/1717204649232.png">
+<meta property="article:published_time" content="2024-06-13T01:22:14.483Z">
+<meta property="article:modified_time" content="2024-06-01T01:45:56.000Z">
 <meta property="article:author" content="w1t2f3">
-<meta property="article:tag" content="实践应用">
+<meta property="article:tag" content="技术基础">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/1716813756191.png">
+<meta name="twitter:image" content="http://example.com/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/1717123823092.png">
   
   
   
-  <title>断网法术之ARP欺骗 - w1t2f3&#39;s blog</title>
+  <title>应急响应 - w1t2f3&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="断网法术之ARP欺骗"></span>
+            <span id="subtitle" data-typed-text="应急响应"></span>
           
         </div>
 
@@ -213,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-27 19:32" pubdate>
-          May 27, 2024 pm
+        <time datetime="2024-06-13 09:22" pubdate>
+          June 13, 2024 am
         </time>
       </span>
     
@@ -225,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k words
+          856 words
         
       </span>
     
@@ -236,7 +237,7 @@
         
         
         
-          11 mins
+          8 mins
         
       </span>
     
@@ -273,61 +274,33 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">断网法术之ARP欺骗</h1>
+            <h1 id="seo-header">应急响应</h1>
             
             
               <div class="markdown-body">
                 
-                <p>想整蛊你的死党朋友让上不了网，黑魔法ARP攻击满足你</p>
+                <p>作为一名白帽，应对来自黑客的攻击和保护好服务器是一门必修课</p>
 <span id="more"></span>
 
-<h3 id="1-1-ARP协议"><a href="#1-1-ARP协议" class="headerlink" title="1.1 ARP协议"></a>1.1 ARP协议</h3><p>先了解一下什么是ARP攻击</p>
-<p>在局域网中，网络中实际传输的是“帧”，帧里面是有目标主机的MAC地址的。在以太网中，一个主机要和另一个主机进行直接通信，必须要知道目标主机的MAC地址。MAC地址就是ARP协议获得的。其实就是主机在发送帧前将目标IP地址转换成目标MAC地址的过程。ARP协议的基本功能就是通过目标设备的IP地址，查询目标设备的MAC地址，以保证通信的顺利进行。所以说从某种意义上讲ARP协议是工作在更低于IP协议的协议层。这也是为什么ARP欺骗更能够让人在神不知鬼不觉的情况下出现网络故障，危害会很隐蔽。</p>
-<h3 id="2-1-ARP欺骗原理"><a href="#2-1-ARP欺骗原理" class="headerlink" title="2.1 ARP欺骗原理"></a>2.1 ARP欺骗原理</h3><p>ARP攻击就是通过伪造IP地址和MAC地址实现ARP欺骗，能够在网络中产生大量的ARP通信量，攻击者只要持续不断的发出伪造的ARP响应包就能更改目标主机ARP缓存中的IP-MAC条目，造成网络中断或中间人攻击。</p>
-<p>当局域网中一台机器，反复向其他机器，特别是向网关，发送这样无效假冒的ARP应答信息包时，严重的网络堵塞就会开始。由于网关MAC地址错误，所以从网络中计算机发来的数据无法正常发到网关，自然无法正常上网。这就造成了无法访问外网的问题，由于很多时候网关还控制着我们的局域网LAN上网，所以这时我们的LAN访问也就出现问题了。</p>
-<p>3.1 断网攻击</p>
-<p>3.1.1 寻找局域网内存活主机</p>
-<p>测试信息</p>
-<p>攻击机：kali	ip：192.168.184.128</p>
-<p>靶机：win10	ip：192.168.184.130</p>
-<p>nmap扫描</p>
-<p><code>nmap -sP 192.168.184.*</code></p>
-<p><img src="/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/1716813756191.png" srcset="/img/loading.gif" lazyload alt="nmap扫描"></p>
-<p>fping探测</p>
-<p><code>fping -g 192.168.184.0/24</code></p>
-<p>3.1.2 查看当前网关</p>
-<p><code>cat etc/resolv.conf</code></p>
-<p><img src="/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/1716813818992.png" srcset="/img/loading.gif" lazyload alt="查看当前网关"></p>
-<p>3.1.3 发起攻击</p>
-<p>使用arpspoof工具</p>
-<p><code>arpspoof   -i   网卡   -t    目标IP    网关</code></p>
-<p><code>arpspoof -i eth0 -t 192.168.184.130 192.168.184.2</code></p>
-<p><img src="/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/1716813805503.png" srcset="/img/loading.gif" lazyload alt="发动攻击"></p>
-<p>攻击开始后，win10靶机就断网了</p>
-<p><img src="/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/1716813961484.png" srcset="/img/loading.gif" lazyload alt="ping百度测试"></p>
-<p>ctrl+Z终止攻击</p>
-<p>补充一点：</p>
-<p>刚方法适用于在同一局域网的目标，如果两台主机同时连接的校园网是大概率不行的，大部分校园网都做了ip隔断，无线用户之间互相隔离</p>
-<h3 id="3-2-ARP欺骗（不断网）"><a href="#3-2-ARP欺骗（不断网）" class="headerlink" title="3.2 ARP欺骗（不断网）"></a>3.2 ARP欺骗（不断网）</h3><p>ARP欺骗攻击是冒充网关向目标主机发送假的ARP数据包。</p>
-<h5 id="攻击流程"><a href="#攻击流程" class="headerlink" title="攻击流程"></a>攻击流程</h5><ol>
-<li>获取目标主机的流量</li>
-<li>获取流量之后进行转发</li>
-</ol>
-<p>相当于一个中间人，可以在中途拦截一下流量，这样所有的流量都会被监控</p>
-<p><strong>开启转发功能</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat /proc/sys/net/ipv4/ip_forward<br>echo 1 &gt; /proc/sys/net/ipv4/ip_forward（转发）<br><span class="hljs-meta prompt_">#</span><span class="language-bash"><span class="hljs-built_in">echo</span> 代表写入</span><br>这样可以实现流量转发，而不是截断流量<br>如果要截断流量，写入0即可<br><span class="hljs-meta prompt_">#</span><span class="language-bash">截断流量</span><br>echo 0 &gt;/proc/sys/net/ipv4/ip_forward（断网）<br></code></pre></td></tr></table></figure>
-
-<p><strong>发起攻击</strong></p>
-<p><code>arpspoof -i eth0 -t 192.168.186.2 192.168.186.131</code>   </p>
-<p>注意这次是网关在前，目标ip在后</p>
-<p><strong>结果</strong></p>
-<p>经过测试后发现，访问http网站时可以拦截流量，而https则不行</p>
-<p>https加密传输，安全性还是挺好的</p>
-<p><strong>这里稍微补充一下HTTP和HTTPS</strong></p>
-<p>1.HTTP是一种发布和接收HTML页面的方法，被用于在Wb浏览器和网站服务器之间传递信息。<br>2.HTTP协议以明文方式发送内容，不提供任何方式的数据加密，如果攻击者截取了Wb浏览器和<br>网站服务器之间的传输报文，就可以直接读懂其中的信息。<br>3.HTTPS经由HTTP进行通信，但利用SSL&#x2F;TLS来加密数据包。HTTPS开发的主要目的，是提<br>供对网站服务器的身份认证，保护交换数据的隐私与完整性。<br>4.HTTPS(SSL+HTTP)数据传输过程是加密的，安全性较好。</p>
-<h3 id="4-1-如何防御ARP欺骗"><a href="#4-1-如何防御ARP欺骗" class="headerlink" title="4.1 如何防御ARP欺骗"></a>4.1 如何防御ARP欺骗</h3><p><strong>ARP 高速缓存超时设置</strong><br>在ARP高速缓存中的表项一般都要设置超时值，缩短这个这个超时值能够有用的避免ARP表的溢出。</p>
-<p><strong>静态ARP缓存表</strong><br>每台主机都有一个暂时寄存IP-MAC的对应表ARP攻击就经过更改这个缓存来到达诈骗的意图，运用静态的ARP来绑定正确的MAC是一个有用的办法，在命令行下运用arp -a能够检查当<strong>时的ARP缓存表。</strong></p>
-<p>自动查询<br>在某个正常的时间，做一个IP和MAC对应的数据库，以后定时检查当时的IP和MAC对应联系是否正常，定时检查交流机的流量列表，检查丢包率。</p>
+<h2 id="0x01-应急响应基本流程"><a href="#0x01-应急响应基本流程" class="headerlink" title="0x01 应急响应基本流程"></a>0x01 应急响应基本流程</h2><p>1）首先判断服务器资产、影响范围以及严重程度，确认有没有必要将服务器下线隔离，然后根据服务器的失陷时间和态势感知的告警，判断是由什么漏洞进来的<br>2）其次就是取证排查阶段，如果是web漏洞，就是查看web日志，根据失陷时间节点往上排查是否上传webshell；<br>再查看后门是否有恶意的命令执行、文件上传。如果有恶意的文件比如说.exe，可以放到一些微步社区平台分析；<br>如果是webshell的话，可以用d盾、河马进行查杀<br>3）接下来可以通过其他主机查看是否有相同的攻击迹象，然后排查是否有可疑的进程、端口、自启动项，可以用火绒剑查看有没有异常外联<br>4）然后就是进行攻击路径的还原，可以通过对日志、流量进行分析、确定他的攻击路径，然后判断出他的漏洞点并切断他的攻击路径<br>5）此时可以再观察一段时间，看有没有流量反连、有没有内存马<br>6）后面可以根据样本分析到的ip地址进行信息收集，进行常规的溯源，查看是否有个人id泄漏、社交平台搜索其个人信息、利用蜜罐系统反制等手段绘制攻击者画像<br>7）若无则尝试是否能够打进其服务器，比如说常见的cs反制，可以爆破攻击者cs服务器密码，或者利用cs漏洞拿到攻击者服务器权限，进一步获取攻击者信息</p>
+<h2 id="0x02-不同系统常用应急响应命令"><a href="#0x02-不同系统常用应急响应命令" class="headerlink" title="0x02 不同系统常用应急响应命令"></a>0x02 不同系统常用应急响应命令</h2><h3 id="Windows系统"><a href="#Windows系统" class="headerlink" title="Windows系统"></a>Windows系统</h3><p>用户排查：<code>net user|lusrmgr.msc</code></p>
+<p><img src="/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/1717123823092.png" srcset="/img/loading.gif" lazyload alt="用户排查"></p>
+<p>启动项排查：<code>msconfig</code></p>
+<p>计划任务排查：<code>schtasks</code></p>
+<p><img src="/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/image-20240531110920534.png" srcset="/img/loading.gif" lazyload alt="计划任务"></p>
+<p>进程排查：<code>netstat -ano | findstr &quot;ESTABLISHED” </code>   #查看建立可以链接的PID进程；<img src="/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/1717125573788.png" srcset="/img/loading.gif" lazyload alt="进程排查"></p>
+<p><code>nestat -anb</code>    #需要管理员权限，快速对应到相关程序</p>
+<p>服务排查：<code>services.msc</code></p>
+<p><img src="/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/1717125713284.png" srcset="/img/loading.gif" lazyload alt="服务排查"></p>
+<p>日志排查：C:\WINDOWS\System32 config\SysEvent.evt或者eventvwr</p>
+<p><img src="/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/1717204649232.png" srcset="/img/loading.gif" lazyload alt="日志排查"></p>
+<p>内存取证：Volatility工具</p>
+<p><strong>Window常用事件id</strong></p>
+<p>4624成功登录     7030服务创建错误</p>
+<p>4625失败登录     7045服务创建</p>
+<p>4720创建用户     4776成功&#x2F;失败的账户认证</p>
+<h3 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h3><p>常用的一些命令</p>
+<p><code>netstat</code>：查看系统网络连接状态和监听端口情况，识别是否有异常连接。<br><code>ps</code>：查看当前系统进程，识别是否有异常进程。<br><code>top</code>：实时监控系统资源占用情况，发现异常进程或恶意程序。<br><code>lsof</code>：列出当前系统打开的文件，包括进程号、文件描述符等信息，帮助发现具有威胁性的进程或文件。<br><code>tcpdump</code>：抓取网络数据包，分析网络流量，检测网络攻击。<br><code>strace</code>：跟踪进程的系统调用和信号，定位问题所在，发现异常进程。<br><code>md5sum</code>：计算文件的MD5值，帮助验证文件完整性。<br><code>find</code>：查找并定位目标文件或目录，搜索指定范围内的文件等。<br><code>grep</code>：查找文本内容，支持正则表达式。<br><code>chattr</code>: 设置文件或目录的属性，比如设置只读和隐藏属性等，保护系统安全。</p>
 
                 
               </div>
@@ -340,7 +313,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%AE%9E%E8%B7%B5%E5%BA%94%E7%94%A8/" class="print-no-link">#实践应用</a>
+        <a href="/tags/%E6%8A%80%E6%9C%AF%E5%9F%BA%E7%A1%80/" class="print-no-link">#技术基础</a>
       
     </div>
   
@@ -352,8 +325,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>断网法术之ARP欺骗</div>
-      <div>http://example.com/2024/05/27/断网法术之ARP欺骗/</div>
+      <div>应急响应</div>
+      <div>http://example.com/2024/06/13/应急响应/</div>
     </div>
     <div class="license-meta">
       
@@ -365,7 +338,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>May 27, 2024</div>
+          <div>June 13, 2024</div>
         </div>
       
       
@@ -397,9 +370,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/13/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/" title="wireshark实战操作">
+                      <a href="/2024/06/13/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6/" title="经久不衰，防不胜防的攻击——社会工程学">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">wireshark实战操作</span>
+                        <span class="hidden-mobile">经久不衰，防不胜防的攻击——社会工程学</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -407,8 +380,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/05/20/google%20hacking/" title="google hacking">
-                        <span class="hidden-mobile">google hacking</span>
+                      <a href="/2024/06/13/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/" title="wireshark实战操作">
+                        <span class="hidden-mobile">wireshark实战操作</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
