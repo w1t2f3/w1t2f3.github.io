@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>在windows上部署ssh</title>
+    <link href="/2024/09/07/%E5%9C%A8windows%E4%B8%8A%E9%83%A8%E7%BD%B2ssh/"/>
+    <url>/2024/09/07/%E5%9C%A8windows%E4%B8%8A%E9%83%A8%E7%BD%B2ssh/</url>
+    
+    <content type="html"><![CDATA[<p>想在windows上使用ssh，一个软件快速实现</p><span id="more"></span><p>下载cygwin工具：</p><p><a href="https://cygwin.com/install.html">https://cygwin.com/install.html</a></p><p><img src="https://cdn.nlark.com/yuque/0/2024/png/35967540/1716462015381-eb12a656-b571-45c0-bbd2-994e371eba95.png" alt="img"></p><p>默认下一步，选择合适的源下载</p><p><img src="https://cdn.nlark.com/yuque/0/2024/png/35967540/1716462124400-6d3836bf-7a88-4a40-bffe-f26ed38abede.png" alt="img"></p><p>选择直接连接：</p><p><img src="https://cdn.nlark.com/yuque/0/2024/png/35967540/1716462168843-e42324cb-bbdd-4bd8-b791-e965eca557be.png" alt="img"></p><p>安装完成即可使用</p><p><img src="https://cdn.nlark.com/yuque/0/2024/png/35967540/1716463377893-d8ec1bf6-b6a8-4da2-ac95-44df0e2655c6.png" alt="img"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>实践应用</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>研判必备--常见webshell攻击的流量特征</title>
     <link href="/2024/09/07/%E7%A0%94%E5%88%A4%E5%BF%85%E5%A4%87--%E5%B8%B8%E8%A7%81webshell%E6%94%BB%E5%87%BB%E7%9A%84%E6%B5%81%E9%87%8F%E7%89%B9%E5%BE%81/"/>
     <url>/2024/09/07/%E7%A0%94%E5%88%A4%E5%BF%85%E5%A4%87--%E5%B8%B8%E8%A7%81webshell%E6%94%BB%E5%87%BB%E7%9A%84%E6%B5%81%E9%87%8F%E7%89%B9%E5%BE%81/</url>
