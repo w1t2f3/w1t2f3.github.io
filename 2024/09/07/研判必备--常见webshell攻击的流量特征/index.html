@@ -16,29 +16,22 @@
   <meta name="author" content="w1t2f3">
   <meta name="keywords" content="">
   
-    <meta name="description" content="使用wireshark分析不同攻击流量">
+    <meta name="description" content="包含菜刀、蚁剑、冰蝎和哥斯拉在内的常见webshell">
 <meta property="og:type" content="article">
-<meta property="og:title" content="wireshark实战操作">
-<meta property="og:url" content="http://example.com/2024/06/13/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:title" content="研判必备--常见webshell攻击的流量特征">
+<meta property="og:url" content="http://example.com/2024/09/07/%E7%A0%94%E5%88%A4%E5%BF%85%E5%A4%87--%E5%B8%B8%E8%A7%81webshell%E6%94%BB%E5%87%BB%E7%9A%84%E6%B5%81%E9%87%8F%E7%89%B9%E5%BE%81/index.html">
 <meta property="og:site_name" content="w1t2f3&#39;s blog">
-<meta property="og:description" content="使用wireshark分析不同攻击流量">
+<meta property="og:description" content="包含菜刀、蚁剑、冰蝎和哥斯拉在内的常见webshell">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717408185613.png">
-<meta property="og:image" content="http://example.com/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717408156899.png">
-<meta property="og:image" content="http://example.com/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717411534620%E7%BC%96%E8%BE%91.png">
-<meta property="og:image" content="http://example.com/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717411600804%E7%BC%96%E8%BE%91.png">
-<meta property="og:image" content="http://example.com/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717413799652.png">
-<meta property="og:image" content="http://example.com/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717414747292.png">
-<meta property="article:published_time" content="2024-06-13T01:22:14.480Z">
-<meta property="article:modified_time" content="2024-09-07T04:11:37.943Z">
+<meta property="article:published_time" content="2024-09-07T04:12:03.508Z">
+<meta property="article:modified_time" content="2024-09-07T04:25:17.681Z">
 <meta property="article:author" content="w1t2f3">
-<meta property="article:tag" content="应用实践">
+<meta property="article:tag" content="实践应用">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717408185613.png">
   
   
   
-  <title>wireshark实战操作 - w1t2f3&#39;s blog</title>
+  <title>研判必备--常见webshell攻击的流量特征 - w1t2f3&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="wireshark实战操作"></span>
+            <span id="subtitle" data-typed-text="研判必备--常见webshell攻击的流量特征"></span>
           
         </div>
 
@@ -215,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-13 09:22" pubdate>
-          June 13, 2024 am
+        <time datetime="2024-09-07 12:12" pubdate>
+          September 7, 2024 pm
         </time>
       </span>
     
@@ -227,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          274 words
+          512 words
         
       </span>
     
@@ -238,7 +231,7 @@
         
         
         
-          3 mins
+          5 mins
         
       </span>
     
@@ -275,35 +268,66 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">wireshark实战操作</h1>
+            <h1 id="seo-header">研判必备--常见webshell攻击的流量特征</h1>
             
             
               <div class="markdown-body">
                 
-                <p>使用wireshark分析不同攻击流量</p>
+                <p>包含菜刀、蚁剑、冰蝎和哥斯拉在内的常见webshell</p>
 <span id="more"></span>
 
-<h1 id="1、暴力破解"><a href="#1、暴力破解" class="headerlink" title="1、暴力破解"></a>1、暴力破解</h1><p>短时间内产生大量流量，且只有某个或多个参数在变化</p>
-<p><img src="/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717408185613.png" srcset="/img/loading.gif" lazyload alt="1717408185613"></p>
-<p><img src="/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717408156899.png" srcset="/img/loading.gif" lazyload alt="1717408156899"></p>
-<p>用bp做的爆破测试，不到一分钟的时间…</p>
-<h1 id="2、冰蝎"><a href="#2、冰蝎" class="headerlink" title="2、冰蝎"></a>2、冰蝎</h1><p>流量通常是加密的，存在明显的冰蝎特征</p>
-<p>如<code>Accept::*/*;q=0.01 </code> <code>Connection:keep-alive</code>(冰蝎默认长链接)</p>
-<p>建立连接后的cookie存在特征字符。所有请求 Cookie的格式都为: <code>Cookie: PHPSESSID=; path=/；</code></p>
-<p><img src="/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717411534620%E7%BC%96%E8%BE%91.png" srcset="/img/loading.gif" lazyload alt="1717411534620编辑"></p>
-<p>请求头中可能包含<code>Pragma: no-cache</code> ,<code>Cache-Control: no-cache</code></p>
-<p><img src="/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717411600804%E7%BC%96%E8%BE%91.png" srcset="/img/loading.gif" lazyload alt="1717411600804编辑"></p>
-<h1 id="3、蚁剑"><a href="#3、蚁剑" class="headerlink" title="3、蚁剑"></a>3、蚁剑</h1><ul>
+<h1 id="冰蝎各版本流量特征"><a href="#冰蝎各版本流量特征" class="headerlink" title="冰蝎各版本流量特征"></a>冰蝎各版本流量特征</h1><h2 id="冰蝎2-0"><a href="#冰蝎2-0" class="headerlink" title="冰蝎2.0"></a>冰蝎2.0</h2><ol>
+<li><p>默认长连接，请求头和响应头里会带有Connection: Keep-Alive</p>
+</li>
+<li><p>accept固定为Accept: text&#x2F;html, image&#x2F;gif, image&#x2F;jpeg, *; q&#x3D;.2, <em>&#x2F;</em>; q&#x3D;.2</p>
+</li>
+</ol>
+<h2 id="冰蝎3-0"><a href="#冰蝎3-0" class="headerlink" title="冰蝎3.0"></a>冰蝎3.0</h2><ol>
+<li><p>content-type固定为application&#x2F;octet-stream（强特征）</p>
+</li>
+<li><p>Accept&amp;Cache-Control；默认设置：</p>
+</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">Accept:</span> <span class="hljs-string">text/html,</span> <span class="hljs-string">image/gif,</span> <span class="hljs-string">image/jpeg,</span> <span class="hljs-string">*;</span> <span class="hljs-string">q=.2,</span> <span class="hljs-string">*/*;</span> <span class="hljs-string">q=.2</span><br><span class="hljs-attr">Cache-Control:</span> <span class="hljs-literal">no</span><span class="hljs-string">-cache</span><br><span class="hljs-attr">Pragma:</span> <span class="hljs-literal">no</span><span class="hljs-string">-cache</span><br><span class="hljs-attr">User-Agent:</span> <span class="hljs-string">java/1.8</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>内置16个ua头（弱特征）</p>
+</li>
+<li><p>content-length 请求长度</p>
+</li>
+</ol>
+<h2 id="冰蝎4-0"><a href="#冰蝎4-0" class="headerlink" title="冰蝎4.0"></a>冰蝎4.0</h2><ol>
+<li><p>content-type固定为<code>application/x-www-form-urlencoded</code></p>
+</li>
+<li><p>accept字段固定为<code>Accept: application/json, text/javascript, */*;q=0.01</code></p>
+</li>
+<li><p>默认ua头库</p>
+</li>
+<li><p>默认长连接，请求头和响应头里会带有Connection: Keep-Alive</p>
+</li>
+<li><p>固定的请求头和响应头</p>
+</li>
+<li><p>默认连接密码rebeyond，所有的webshell都有一串密钥，该密钥的值为连接密码MD5值的前16位</p>
+</li>
+<li><p>端口：客户端 与 服务端建立连接时，连接所使用本地端口分布在 49700 左右，每建立一次新的连接，端口就依次增加</p>
+</li>
+</ol>
+<h1 id="哥斯拉流量特征"><a href="#哥斯拉流量特征" class="headerlink" title="哥斯拉流量特征"></a>哥斯拉流量特征</h1><ol>
+<li>ua头（弱特征）</li>
+<li>accept字段：text&#x2F;html, image&#x2F;gif, image&#x2F;jpeg, *; q&#x3D;.2, &#x2F;; q&#x3D;.2（弱特征）</li>
+<li>cookie。请求包的Cookie中有一个非常致命的特征，分号；（强特征）</li>
+<li>请求体特征 (较强特征)：比较大的数据包，base64编码</li>
+<li>响应体特征 (强特征)：如果之前的请求体采用base64编码，响应体返回的也是base64编码Cache-Control: no-store, no-cache, must-revalidate</li>
+</ol>
+<h1 id="蚁剑"><a href="#蚁剑" class="headerlink" title="蚁剑"></a>蚁剑</h1><ul>
 <li><p>每个请求实体都存在<code>@ini_set(“display_errors”, “0”);@set_time_limit(0)</code>开头。并且后面存在base64等字符</p>
 </li>
 <li><p>使用 随机数+响应内容+随机数使用base64加密的payload，数据包存在以下base加密的eval命令，数据包中的payload几个分段内容都是用了base加密，解密之后可以看到相关的路径和命令等。</p>
 </li>
 </ul>
-<p><img src="/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717413799652.png" srcset="/img/loading.gif" lazyload alt="1717413799652"></p>
-<h1 id="4、菜刀"><a href="#4、菜刀" class="headerlink" title="4、菜刀"></a>4、菜刀</h1><p>  ⅰ. 请求包中 ua头为百度爬虫，火狐</p>
+<h1 id="菜刀"><a href="#菜刀" class="headerlink" title="菜刀"></a>菜刀</h1><p>  ⅰ. 请求包中 ua头为百度爬虫，火狐</p>
 <p>  ⅱ. 请求实体中存在eval，base64等特征字符</p>
 <p>  ⅲ. 请求实体中传递depayload为base64编码，并且存在固定的Base64编码</p>
-<p><img src="/wireshark%E5%AE%9E%E6%88%98%E6%93%8D%E4%BD%9C/1717414747292.png" srcset="/img/loading.gif" lazyload alt="1717414747292"></p>
 
                 
               </div>
@@ -316,7 +340,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5/" class="print-no-link">#应用实践</a>
+        <a href="/tags/%E5%AE%9E%E8%B7%B5%E5%BA%94%E7%94%A8/" class="print-no-link">#实践应用</a>
       
     </div>
   
@@ -328,8 +352,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>wireshark实战操作</div>
-      <div>http://example.com/2024/06/13/wireshark实战操作/</div>
+      <div>研判必备--常见webshell攻击的流量特征</div>
+      <div>http://example.com/2024/09/07/研判必备--常见webshell攻击的流量特征/</div>
     </div>
     <div class="license-meta">
       
@@ -341,7 +365,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>June 13, 2024</div>
+          <div>September 7, 2024</div>
         </div>
       
       
@@ -373,18 +397,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/13/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" title="应急响应">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">应急响应</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/05/27/%E6%96%AD%E7%BD%91%E6%B3%95%E6%9C%AF%E4%B9%8BARP%E6%AC%BA%E9%AA%97/" title="断网法术之ARP欺骗">
-                        <span class="hidden-mobile">断网法术之ARP欺骗</span>
+                      <a href="/2024/09/07/%E7%BB%8F%E5%85%B8%E6%BC%8F%E6%B4%9E/" title="内网贯穿--曾经危害巨大的经典漏洞">
+                        <span class="hidden-mobile">内网贯穿--曾经危害巨大的经典漏洞</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
